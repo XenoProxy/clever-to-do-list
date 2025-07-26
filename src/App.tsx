@@ -1,24 +1,23 @@
-import { useState } from 'react'
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App: React.FC = () => {
   return (
     <>
-      <h1>Clever to-do list</h1>
-      <div className="container">
-        <a href="#"><span className="bright sign-in">Sign in</span></a>
-        <p className="simpe-text">or</p>
-        <a href="#"><span className="bright register">Register</span></a>
-      </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <nav className="container">
+        <Link to="/">Главная</Link>
+        <Link to="/about">О нас</Link>
+      </nav>
+      <hr />      
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
